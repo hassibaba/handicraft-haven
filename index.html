@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handicraft Haven</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            /* Define golden theme colors */
+            --color-gold-primary: #c6ab54; /* Main gold color from image */
+            --color-gold-secondary: #d4af37; /* Slightly brighter gold for accents/buttons */
+            --color-dark: #333333; /* Dark background color */
+            --color-darker: #222222; /* Even darker for footer */
+            --color-light-bg: #f8f7f2; /* Light background for sections */
+            --color-brown: #5a3d2b; /* Warm brown for testimonials */
+            --color-text-dark: #333333;
+            --color-text-light: #f8f9fa;
+            --color-text-muted: #6c757d;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif; /* Clean sans-serif for body */
+            color: var(--color-text-dark);
+            background-color: #ffffff; /* White background */
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Merriweather', serif; /* Elegant serif for headings */
+            color: var(--color-text-dark);
+        }
+
+        /* --- Navigation --- */
+        .navbar {
+            background-color: var(--color-dark) !important; /* Dark navbar */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .navbar-brand {
+            color: var(--color-gold-primary) !important; /* Gold logo text */
+            font-weight: bold;
+            font-family: 'Merriweather', serif;
+        }
+        .navbar .nav-link {
+            color: var(--color-text-light) !important; /* Light text for links */
+            margin-left: 10px;
+            margin-right: 10px;
+            transition: color 0.3s ease;
+        }
+        .navbar .nav-link:hover,
+        .navbar .nav-link.active {
+            color: var(--color-gold-secondary) !important; /* Gold hover/active color */
+        }
+        .navbar .nav-link i {
+            font-size: 1.1rem; /* Slightly larger icons */
+        }
+
+        /* --- Hero Section --- */
+        #heroCarousel .carousel-item {
+            height: 600px; /* Adjust height as needed */
+            background-size: cover;
+            background-position: center;
+        }
+        #heroCarousel .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.4); /* Semi-transparent dark overlay */
+            padding: 2rem;
+            border-radius: 0.5rem;
+            bottom: 10%; /* Position caption lower */
+        }
+        #heroCarousel .carousel-caption h1 {
+            color: var(--color-gold-primary);
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+        }
+         #heroCarousel .carousel-caption p {
+            color: var(--color-text-light);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+        .btn-theme { /* General theme button */
+            background-color: var(--color-gold-secondary);
+            color: var(--color-dark);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .btn-theme:hover {
+            background-color: var(--color-gold-primary);
+            color: #ffffff;
+        }
+        .carousel-indicators [data-bs-target] {
+             background-color: var(--color-gold-primary); /* Gold indicators */
+        }
+
+        /* --- Steps Section --- */
+        .steps-section {
+            padding: 30px 0;
+            background-color: var(--color-light-bg); /* Light background */
+        }
+        .step-item {
+            background-color: var(--color-gold-primary); /* Gold background */
+            color: var(--color-dark);
+            padding: 15px;
+            text-align: center;
+            clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%); /* Banner shape */
+            margin-bottom: 1rem; /* Spacing for mobile */
+            transition: background-color 0.3s ease;
+        }
+        .step-item:hover {
+             background-color: var(--color-gold-secondary);
+        }
+        .step-item i {
+            display: block;
+            font-size: 2rem;
+            margin-bottom: 5px;
+            color: var(--color-dark); /* Dark icons on gold background */
+        }
+        .step-item p {
+            font-weight: bold;
+            margin-bottom: 0;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        /* Adjust shape for the last item */
+        .step-item:last-child {
+             clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Rectangle for last */
+        }
+        /* Responsive adjustments for steps */
+         @media (min-width: 768px) {
+             .step-item {
+                 clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
+                 margin-bottom: 0; /* Remove bottom margin on larger screens */
+             }
+             .step-item:last-child {
+                 clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%); /* Keep shape consistent */
+             }
+             .steps-section .row > div:last-child .step-item {
+                 clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%); /* Last item rectangle */
+             }
+         }
+
+
+        /* --- Products Section --- */
+        .section {
+            padding: 60px 0;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+            color: var(--color-text-dark);
+        }
+        .product-card {
+            background-color: #ffffff; /* White card background */
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            padding: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden; /* Ensure image fits */
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: 250px; /* Fixed height for product images */
+            object-fit: cover; /* Cover the area nicely */
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .product-card h5 {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--color-text-dark);
+        }
+        .product-card .price {
+            color: var(--color-gold-primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+        .btn-quick-view {
+            background-color: transparent;
+            color: var(--color-gold-secondary);
+            border: 1px solid var(--color-gold-secondary);
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .btn-quick-view:hover {
+            background-color: var(--color-gold-secondary);
+            color: var(--color-dark);
+        }
+
+        /* --- Connect Section --- */
+        .connect-section {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 80px 0;
+            color: var(--color-text-light);
+        }
+        .connect-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6); /* Darker overlay */
+            z-index: 1;
+        }
+        .connect-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+        .connect-content h2 {
+            color: var(--color-gold-primary);
+            margin-bottom: 1rem;
+        }
+        .connect-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .connect-content .form-control {
+            max-width: 400px; /* Limit input width */
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 1rem;
+            border-radius: 5px;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            background-color: var(--color-brown); /* Warm brown background */
+            background-size: cover; /* If using an image */
+            background-position: center;
+            padding: 60px 0;
+            position: relative;
+            color: var(--color-text-light);
+        }
+         .testimonials-section .carousel-caption {
+             position: static; /* Override default absolute positioning */
+             text-align: center;
+             padding: 2rem;
+             background: none; /* Remove dark overlay if not needed */
+         }
+        .testimonials-section h2 {
+             color: var(--color-gold-primary);
+             margin-bottom: 2rem;
+        }
+        .testimonial-item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--color-gold-primary);
+        }
+        .testimonial-item blockquote {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .testimonial-item cite {
+            font-weight: bold;
+            font-style: normal;
+            display: block;
+            color: var(--color-gold-secondary);
+        }
+        .testimonials-section .carousel-indicators {
+            bottom: -30px; /* Position indicators below */
+        }
+
+
+        /* --- Footer --- */
+        .site-footer {
+            background-color: var(--color-darker); /* Darker footer */
+            color: var(--color-text-muted);
+            padding-top: 40px;
+            font-size: 0.9rem;
+        }
+        .footer-column h4 {
+            color: var(--color-gold-primary);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+        .footer-column ul li a:hover {
+            color: var(--color-gold-secondary);
+        }
+        .social-icons a {
+            color: var(--color-text-muted);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var(--color-gold-secondary);
+        }
+        .newsletter-form input[type="email"] {
+            background-color: #444;
+            border: none;
+            color: var(--color-text-light);
+            padding: 0.5rem;
+            border-radius: 3px 0 0 3px;
+            width: calc(100% - 110px); /* Adjust width */
+            display: inline-block;
+        }
+        .newsletter-form input[type="email"]::placeholder {
+            color: #aaa;
+        }
+        .newsletter-form button {
+            background-color: var(--color-gold-secondary);
+            color: var(--color-dark);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0 3px 3px 0;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: inline-block;
+            vertical-align: top; /* Align button with input */
+        }
+        .newsletter-form button:hover {
+            background-color: var(--color-gold-primary);
+            color: var(--color-text-light);
+        }
+        .footer-bottom {
+            background-color: #111; /* Black bottom bar */
+            color: #aaa;
+            padding: 15px 0;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">HANDICRAFT HAVEN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Jewelry</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Wooden</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Metal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Decor</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-search"></i></a></li>
+                    <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="background-image: url('img/pexels-tomas-anunziata-129267-695202.jpg');">
+                 <div class="carousel-caption d-none d-md-block">
+                    <h1>Artistry in Every Detail</h1>
+                    <p>Discover unique, handcrafted treasures made with passion and skill.</p>
+                    <a href="#featured-products" class="btn btn-theme">Explore Collection</a>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image: url('img/pramod-kumar-sharma-TpjvNsI_h_0-unsplash.jpg');">
+                 <div class="carousel-caption d-none d-md-block">
+                    <h1>Timeless Traditions</h1>
+                    <p>Bringing authentic craftsmanship from artisans around the world to your home.</p>
+                    <a href="#new-products" class="btn btn-theme">Shop New Arrivals</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </header>
+
+    <section class="steps-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6 mb-3 mb-md-0"> <div class="step-item">
+                        <i class="fas fa-mouse-pointer"></i> <p>Choose</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3 mb-md-0"> <div class="step-item">
+                        <i class="fas fa-box-open"></i>
+                        <p>Order</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3 mb-md-0"> <div class="step-item">
+                        <i class="fas fa-credit-card"></i> <p>Pay</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3 mb-md-0"> <div class="step-item">
+                        <i class="fas fa-truck"></i>
+                        <p>Receive</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="new-products" class="section bg-light"> <div class="container">
+            <h2 class="section-title">New Products</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="img/35b9e9a1-a2d1-4f1a-8133-7be3d46c2a9e.jpeg" alt="Handmade Necklace"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/eeeeee/cccccc?text=Necklace';">
+                        <h5>Golden Weave Necklace</h5>
+                        <p class="price">₹ 3599.00</p>
+                        <button class="btn btn-quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="img/Hand-Painted Terracotta Pots 🎨🪴_ Transform Your….jpeg" alt="Handmade Pot"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/eeeeee/cccccc?text=Pot';">
+                        <h5>Terracotta Painted Pot</h5>
+                        <p class="price">₹ 1899.00</p>
+                        <button class="btn btn-quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="img/Small.jpeg" alt="Handmade Basket"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/eeeeee/cccccc?text=Basket';">
+                        <h5>Woven Seagrass Basket</h5>
+                        <p class="price">₹ 2499.00</p>
+                        <button class="btn btn-quick-view">Quick View</button>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="img/925 Sterling Silver Vintage Butterfly Ring, Artisan Made Handcrafted Filigree Women Monarch Butterfly Cocktail Ring, Handmade Jewelry.jpeg" alt="Handmade Rings"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/eeeeee/cccccc?text=Rings';">
+                        <h5>Artisan Silver Rings</h5>
+                        <p class="price">₹ 4200.00</p>
+                        <button class="btn btn-quick-view">Quick View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="connect-section" style="background-image: url('img/download.jpeg');">
+        <div class="connect-overlay"></div>
+        <div class="container connect-content">
+            <h2>Connect With Us</h2>
+            <p>Subscribe to our newsletter for the latest updates, new arrivals, and exclusive offers.</p>
+            <form class="d-flex justify-content-center">
+                 <input type="email" placeholder="Enter your email" class="form-control w-50 me-2">
+                 <button type="submit" class="btn btn-theme">Join Now</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="featured-products" class="section"> <div class="container">
+            <h2 class="section-title">Featured Products</h2>
+            <div class="row">
+                 <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="img/asif-sharif-TgMoDrvKZls-unsplash.jpg" alt="Handmade Elephant"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/eeeeee/cccccc?text=Elephant';">
+                        <h5>Carved Wooden Elephant</h5>
+                        <p class="price">₹ 4500.00</p>
+                        <button class="btn btn-quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="img/Large Edwardian silver chest jewellery box.jpeg" alt="Handmade Silver Box"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/eeeeee/cccccc?text=Box';">
+                        <h5>Embossed Silver Box</h5>
+                        <p class="price">₹ 5999.00</p>
+                        <button class="btn btn-quick-view">Quick View</button>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="img/Bronze Ballet Girl Statues Beauty Ballerina Bronze Sculpture Ballet Dance Art Figurines For Home.jpeg" alt="Handmade Statue"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/eeeeee/cccccc?text=Statue';">
+                        <h5>Bronze Dancing Statue</h5>
+                        <p class="price">₹ 7500.00</p>
+                        <button class="btn btn-quick-view">Quick View</button>
+                    </div>
+                </div>
+                 <div class="col-md-6 col-lg-3">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1599643477877-530eb83abc8e?q=80&w=400&auto=format&fit=crop" alt="Handmade Jewelry Set"
+                             onerror="this.onerror=null; this.src='https://placehold.co/400x250/eeeeee/cccccc?text=Jewelry';">
+                        <h5>Beaded Jewelry Set</h5>
+                        <p class="price">₹ 3999.00</p>
+                        <button class="btn btn-quick-view">Quick View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section" style="background-image: url('https://images.unsplash.com/photo-1604147706283-d7119b5b822c?q=80&w=1974&auto=format&fit=crop'); background-color: var(--color-brown);">
+        <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+             <div class="carousel-indicators">
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#testimonialCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="container testimonial-item text-center">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=100&h=100&auto=format&fit=crop" alt="Customer 1"
+                             onerror="this.onerror=null; this.src='https://placehold.co/100/cccccc/6c757d?text=Client+1';">
+                         <h2>What People Are Saying</h2>
+                        <blockquote>
+                            "Absolutely stunning craftsmanship! The details on the wooden elephant I purchased are incredible. It arrived safely packaged and looks perfect in my living room."
+                        </blockquote>
+                        <cite>Sarah K., Lahore</cite>
+                    </div>
+                </div>
+                 <div class="carousel-item">
+                    <div class="container testimonial-item text-center">
+                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&h=100&auto=format&fit=crop" alt="Customer 2"
+                              onerror="this.onerror=null; this.src='https://placehold.co/100/cccccc/6c757d?text=Client+2';">
+                         <h2>What People Are Saying</h2>
+                        <blockquote>
+                            "I bought a beautiful necklace as a gift, and my friend loved it! The quality is exceptional, and the design is so unique. Highly recommend this store."
+                        </blockquote>
+                        <cite>Ahmed R., Karachi</cite>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4 footer-column">
+                    <h4>INFORMATION</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Jewelry</a></li>
+                        <li><a href="#">Wooden Handicrafts</a></li>
+                        <li><a href="#">Metal Crafts</a></li>
+                        <li><a href="#">Home Decor</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 footer-column">
+                    <h4>MY ACCOUNT</h4>
+                    <ul>
+                        <li><a href="#">My Account</a></li>
+                        <li><a href="#">Order History</a></li>
+                        <li><a href="#">Wish List</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                         <li><a href="#">Help</a></li>
+                    </ul>
+                </div>
+                 <div class="col-lg-3 col-md-6 mb-4 footer-column">
+                    <h4>FOLLOW US</h4>
+                    <p>Stay connected through social media:</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4 footer-column">
+                    <h4>NEWSLETTER</h4>
+                    <p>Subscribe for updates and special offers.</p>
+                    <form action="#" method="post" class="newsletter-form">
+                        <input type="email" placeholder="Enter your Email...">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Handicraft Haven. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
